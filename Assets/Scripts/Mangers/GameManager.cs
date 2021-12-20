@@ -1,10 +1,18 @@
-﻿using System.Collections;
+﻿
+/***********************************************************************************************
+ * Game Manager is the main manager of the script that controls the gameloop for the entire Game. 
+ * GameManager intitalizes all the other managers and it contains a satemachine for the game flow
+ ************************************************************************************************/
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 public class GameManager : GenericSingleton<GameManager>
 {
 
+    #region public
     public GameState curr_GameState;
     public UnityAction OnTimerComplete;
     public UnityAction OnTimerStart;
@@ -18,8 +26,9 @@ public class GameManager : GenericSingleton<GameManager>
     public int WrongScore = -200;
     public int currt_input_value = 0;
     public ShapeScriptableObjects curr_shape;
+    #endregion
 
-    // Start is called before the first frame update
+    // Start is to intialize all the managers, TODO: Create a loading bar based on manger's intialization
     void Start()
     {
         EventManager.Instance.Init();
@@ -31,7 +40,7 @@ public class GameManager : GenericSingleton<GameManager>
        
       
     }
-
+    // Playerprefs is used for saving and loading highscore. TODO: Binary format
     void Init()
     {
         // curr_GameState = GameState.Begin;
@@ -62,7 +71,9 @@ public class GameManager : GenericSingleton<GameManager>
     }
 
 
-
+    // GameLoop
+    //Update is the main loop and flow of the game. TODO: Extract Methods to simplify
+    // 
     void Update()
     {
         if (curr_GameState != GameState.Selection)
@@ -94,6 +105,8 @@ public class GameManager : GenericSingleton<GameManager>
        
     }
 
+    // State machine update for the game
+
     public void UpdateGameState(GameState NewState)
     {
         curr_GameState = NewState;
@@ -112,6 +125,8 @@ public class GameManager : GenericSingleton<GameManager>
 
     }
 
+
+    //Validates userinput with the shown shape value to see if the answer is correct
 
     public void ValidateInput()
     {
