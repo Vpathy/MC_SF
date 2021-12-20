@@ -1,4 +1,13 @@
-﻿using System.Collections;
+﻿
+/***********************************************************************************************
+ *Spwan Manager for Spwaning of the shape
+ *Random Spwan is simple as we have 25% for all shapes : TOdO : Different probability%
+ * Object pool ti reuse instead of creating continuosly
+ ************************************************************************************************/
+
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

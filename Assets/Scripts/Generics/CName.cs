@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿/***********************************************************************************************
+ *Cname is for const name used in the game
+ *Event names can be changed here.
+ *Playerpref or any const values will be added here.
+ ************************************************************************************************/
+
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

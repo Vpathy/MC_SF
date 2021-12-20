@@ -1,4 +1,13 @@
-﻿using System.Collections;
+﻿/***********************************************************************************************
+ *Time Manager for Timer control
+ *Reads duration which is addition of both countdown duration and gameplay duration
+ * Tick is the udpate loop than will be run in Game Manager
+ ************************************************************************************************/
+
+
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -18,24 +27,27 @@ public class TimeManager : GenericSingleton<TimeManager>
 
     }
 
-    private void OnEnable()
-    {
+    /// <summary>
+    /// Currently not needed
+    /// </summary>
+
+    //private void OnEnable()
+    //{
         
-    }
+    //}
 
 
-    private void OnDisable()
-    {
-       // _timer.TimerComplete -= OnComplete;
-    }
+    ////private void OnDisable()
+    ////{
+    //   // _timer.TimerComplete -= OnComplete;
+    //}
 
-    private void OnComplete()
-    {
-         // EventManager.TriggerEvent(CName.gameEND);
-    }
+    //private void OnComplete()
+    //{
+    //     // EventManager.TriggerEvent(CName.gameEND);
+    //}
 
 
-    // Update is called once per frame
    public void TimerUpdate()
     {
         if(_timer!=null)
