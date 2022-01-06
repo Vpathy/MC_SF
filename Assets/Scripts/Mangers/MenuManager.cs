@@ -15,6 +15,10 @@ public class MenuManager : GenericSingleton<MenuManager>
     public Image ShapeUI;
     public Text ScoreTxt;
     public Text HighScoreTxt;
+
+    public Button LftButton;
+    public Button RgtButton;
+    public Image FlashImage;
     public void Init()
     {
         EventManager.AddListener(CName.gameStart, ShowCountDownUI);
@@ -24,6 +28,10 @@ public class MenuManager : GenericSingleton<MenuManager>
         EventManager.AddListener(CName.gameEND, HideGamePlayUI);
         EventManager.AddListener(CName.gameEND, ShowGameOverUI);
         EventManager.AddListener(CName.newShape, LoadUIShape);
+        EventManager.AddListener(CName.click, DisableButton);
+        EventManager.AddListener(CName.correct, correctFlash);
+        EventManager.AddListener(CName.wrong, WrongFlash);
+
 
     }
 
@@ -31,6 +39,8 @@ public class MenuManager : GenericSingleton<MenuManager>
     public void LoadUIShape()
     {
         ShapeUI.sprite = GameManager.Instance?.curr_shape.Shape.ShapeSprite;
+        RgtButton.interactable = LftButton.interactable = true;
+
     }
 
 
@@ -82,6 +92,29 @@ public class MenuManager : GenericSingleton<MenuManager>
         Application.Quit();
     }
 
+    public void DisableButton()
+    {
+       RgtButton.interactable = LftButton.interactable = false;
+    }
+
+    public void correctFlash()
+    {
+        FlashImage.color = new Color(0, 1, 0);
+        FlashImage.enabled = true;
+        Invoke("DisableFlash", .05f);
+    }
+
+    public void WrongFlash()
+    {
+        FlashImage.color = new Color(1, 0, 0);
+        FlashImage.enabled = true;
+        Invoke("DisableFlash", .05f);
+    }
+
+    public void DisableFlash()
+    {
+        FlashImage.enabled = false;
+    }
 
     public void updateUI()
     {

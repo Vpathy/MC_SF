@@ -22,7 +22,7 @@ public class SpwanManager : GenericSingleton<SpwanManager>
     {
        GM = GameManager.Instance;
        InitalizePool();
-       EventManager.AddListener(CName.countdownEnd, createShape);
+       EventManager.AddListener(CName.countdownEnd, CreateShape);
     }
 
 
@@ -36,7 +36,7 @@ public class SpwanManager : GenericSingleton<SpwanManager>
 
 
 
-    public void createShape()
+    public void CreateShape()
     {
         if(GM.curr_GameState == GameState.Gameplay)
         StartCoroutine(Spwan());
@@ -56,7 +56,7 @@ public class SpwanManager : GenericSingleton<SpwanManager>
         CurrentList.Add(GM.curr_shape);
         EventManager.TriggerEvent(CName.newShape);
         yield return new WaitForSeconds(SpwanInterval);
-        createShape();
+        CreateShape();
     }
 
 

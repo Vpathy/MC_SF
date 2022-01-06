@@ -19,6 +19,10 @@ public class CName
     public const string isPlaying = "PLAYING";
     public const string isPause = "PAUSE";
     public const string newShape = "NEWSHAPE";
+    public const string click = "ButtonClick";
+    public const string correct = "Correct";
+    public const string wrong = "Wrong";
     public const string HighscoreKey = "HIGHSCORE";
+
 
 }

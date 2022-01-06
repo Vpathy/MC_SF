@@ -36,6 +36,7 @@ public class GameManager : GenericSingleton<GameManager>
         MenuManager.Instance.Init();
         SpwanManager.Instance.Init();
         InputManager.Instance.Init();
+        SfxManager.Instance.Init();
       Instance.Init();
        
       
@@ -126,6 +127,7 @@ public class GameManager : GenericSingleton<GameManager>
     }
 
 
+
     //Validates userinput with the shown shape value to see if the answer is correct
 
     public void ValidateInput()
@@ -134,10 +136,12 @@ public class GameManager : GenericSingleton<GameManager>
         if(currt_input_value == curr_shape.value)
         {
             Score += 100;
+            EventManager.TriggerEvent(CName.correct);
         }
         else
         {
             Score -= 200;
+            EventManager.TriggerEvent(CName.wrong);
         }
     }
 

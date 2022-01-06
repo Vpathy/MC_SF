@@ -21,11 +21,12 @@ public class InputManager : GenericSingleton<InputManager>
         EventManager.AddListener(CName.newShape, PressKey);
     }
 
-    // UI Player input
+    // UI Button Click Player input
     public void PlayerUIInput(int value)
     {
         if (CanPress)
         {
+            EventManager.TriggerEvent(CName.click);
             GM.currt_input_value = value;
             GM.ValidateInput();
             CanPress = false;
@@ -42,19 +43,31 @@ public class InputManager : GenericSingleton<InputManager>
                 GM.currt_input_value = -1;
                 GM.ValidateInput();
                 CanPress = false;
+                EventManager.TriggerEvent(CName.click);
+
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 GM.currt_input_value = 1;
                 GM.ValidateInput();
                 CanPress = false;
+                EventManager.TriggerEvent(CName.click);
+
             }
+
         }
     }
 
-    // Need to make sure multiple press donot happen
+    // Need to make sure multiple press donot happen and also updates score if no key is pressed
     public void PressKey()
     {
+        if(CanPress)
+        {
+            GM.Score -= 100;
+            EventManager.TriggerEvent(CName.wrong);
+        }
+        else
         CanPress = true;
+
     }
 }

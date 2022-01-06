@@ -28,25 +28,8 @@ public class TimeManager : GenericSingleton<TimeManager>
     }
 
     /// <summary>
-    /// Currently not needed
+    ///  Ticks every frame
     /// </summary>
-
-    //private void OnEnable()
-    //{
-        
-    //}
-
-
-    ////private void OnDisable()
-    ////{
-    //   // _timer.TimerComplete -= OnComplete;
-    //}
-
-    //private void OnComplete()
-    //{
-    //     // EventManager.TriggerEvent(CName.gameEND);
-    //}
-
 
    public void TimerUpdate()
     {
