@@ -63,7 +63,7 @@ public class InputManager : GenericSingleton<InputManager>
     {
         if(CanPress)
         {
-            GM.Score -= 100;
+            GM.Score -= CName.negativeScore;
             EventManager.TriggerEvent(CName.wrong);
         }
         else

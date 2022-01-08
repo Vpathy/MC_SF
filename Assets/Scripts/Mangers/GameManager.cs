@@ -135,12 +135,12 @@ public class GameManager : GenericSingleton<GameManager>
 
         if(currt_input_value == curr_shape.value)
         {
-            Score += 100;
+            Score += CName.positiveScore;
             EventManager.TriggerEvent(CName.correct);
         }
         else
         {
-            Score -= 200;
+            Score -= CName.negativeScore;
             EventManager.TriggerEvent(CName.wrong);
         }
     }

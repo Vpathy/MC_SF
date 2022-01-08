@@ -23,6 +23,8 @@ public class CName
     public const string correct = "Correct";
     public const string wrong = "Wrong";
     public const string HighscoreKey = "HIGHSCORE";
+    public const int negativeScore = 200;
+    public const int positiveScore = 100;
 
 
 }
